@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg2">
+
+    <android.support.v7.widget.CardView
+
+        android:id="@+id/card_frame2"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="135dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/bluetooth_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="蓝牙状态"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            />
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="19dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="21dp"
+                android:layout_toRightOf="@+id/bluetooth_state"
+                android:src="@mipmap/img_bluetooth_on" />
+        <TextView
+            android:id="@+id/tv2BTState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="断开"
+            android:textColor="@android:color/black"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/voice_recond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="声音提示"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="19dp"
+                android:src="@mipmap/voice"
+                android:layout_marginTop="82dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/voice_recond"
+             />
+
+        <Switch
+            android:id="@+id/sw2Music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="80dp"
+            android:layout_alignParentRight="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv2BTState"
+
+            />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+<android.support.v7.widget.CardView
+    android:id="@+id/card_man"
+    android:layout_width="300dp"
+    android:layout_height="350dp"
+    android:layout_below="@+id/card_frame2"
+    android:layout_marginTop="40dp"
+    android:layout_centerHorizontal="true"
+    app:cardCornerRadius="30dp">
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="@drawable/bg_man"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="333dp"
+        >
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_gravity="center"
+                android:id="@+id/gifviewSit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:src="@drawable/sit_0" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/card_man"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        app:cardCornerRadius="10dp">
+    <TextView
+        android:id="@+id/tv2SitState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="坐姿正确"
+        android:layout_gravity="center"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints" />
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
