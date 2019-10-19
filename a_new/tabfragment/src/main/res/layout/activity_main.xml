@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--<fragment-->
+        <!--android:id="@+id/fragment"-->
+        <!--android:name="com.example.tabfragment.LibSVM_Fragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/text_bluetooth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/bluetooth_drawable"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="蓝牙"
+            android:textColor="@drawable/bluetooth_text"
+            android:background="#EEFFFFFF"
+            android:paddingTop="5dp"
+            android:paddingBottom="3dp"
+         />
+
+        <TextView
+            android:id="@+id/text_svm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/svm_drawable"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="SVM"
+            android:textColor="@drawable/svm_text"
+            android:background="#99FFFFFF"
+            android:paddingTop="6dp"
+            android:paddingBottom="3dp"
+           />
+        <TextView
+            android:id="@+id/text_set"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/set_drawable"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="@drawable/set_text"
+            android:background="#CCFFFFFF"
+            android:paddingTop="5dp"
+            android:paddingBottom="3dp"/>
+
+    </LinearLayout>
+</RelativeLayout>
