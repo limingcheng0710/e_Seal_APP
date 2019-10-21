@@ -1,6 +1,7 @@
 package com.nerosong.sittingmonitor;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -39,18 +40,38 @@ import butterknife.OnClick;
 
 public class Fragment3 extends Fragment {
 
-
+    @BindView(R.id.text_quit)
+    TextView textQuit;
+    @BindView(R.id.about_app)
+    TextView aboutApp;
+    @BindView(R.id.user_information)
+    TextView userInformation;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment3, container, false);
         ButterKnife.bind(this, view);
-
-
         return view;
     }
 
+    @OnClick(R.id.text_quit)
+    public void quit_Login() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.about_app)
+    public void about_App() {
+        Intent intent = new Intent(getActivity(), About_APP.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @OnClick(R.id.user_information)
+    public void onViewClicked() {
+        Intent intent = new Intent(getActivity(), UserInformation.class);
+        startActivity(intent);
+    }
 
 
 }

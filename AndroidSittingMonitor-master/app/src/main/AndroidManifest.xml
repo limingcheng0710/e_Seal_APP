@@ -46,6 +46,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TableActivity"/>
+        <activity android:name=".About_APP" />
+        <activity android:name=".UserInformation" />
 
         <provider
             android:authorities="com.nerosong.sittingmonitor.fileprovider"
