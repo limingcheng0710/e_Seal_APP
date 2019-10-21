@@ -32,7 +32,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class Fragment2 extends Fragment {
     //branch branch branch
-    //guanbuguanyong!
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
