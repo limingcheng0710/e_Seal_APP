@@ -1,40 +1,26 @@
 package com.nerosong.sittingmonitor;
 
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.media.MediaPlayer;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
+import butterknife.OnClick;
 
 
 public class Fragment2 extends Fragment {
-    //branch branch branch
-    //123456
-    //456789
-        //4654546465
+
+
+    @BindView(R.id.select_All_Records)
+    Button selectAllRecords;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,4 +31,10 @@ public class Fragment2 extends Fragment {
     }
 
 
+
+
+    @OnClick(R.id.select_All_Records)
+    public void onClick() {
+        startActivity(new Intent(getActivity(), TableActivity.class));
+    }
 }

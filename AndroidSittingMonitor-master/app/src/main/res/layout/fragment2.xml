@@ -6,6 +6,12 @@
     tools:context=".MainActivity"
     android:background="@drawable/bg2">
 
+<Button
+    android:id="@+id/select_All_Records"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="查询所有记录"
+   />
 
 
 
