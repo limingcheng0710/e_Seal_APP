@@ -29,8 +29,9 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-
 public class Fragment2 extends Fragment {
+
+
     private SparseArray<TextView> mTitleTvArray;
     //表格部分
     private TextView tv_table_title_left;
@@ -45,8 +46,6 @@ public class Fragment2 extends Fragment {
     private WeakHandler mHandler = new WeakHandler();
     private Context mContext;
 
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,6 +56,9 @@ public class Fragment2 extends Fragment {
     }
 
 
+
+
+
     public void init() {
         mContext = getActivity().getApplicationContext();
         findByid();
@@ -65,13 +67,13 @@ public class Fragment2 extends Fragment {
     }
 
     public void findByid() {
-        pulltorefreshview = (AbPullToRefreshView)getActivity(). findViewById(R.id.pulltorefreshview);
-//        pulltorefreshview.setPullRefreshEnable(false);
+        pulltorefreshview = (AbPullToRefreshView) getActivity().findViewById(R.id.pulltorefreshview);
+        pulltorefreshview.setPullRefreshEnable(false);
         tv_table_title_left = (TextView) getActivity().findViewById(R.id.tv_table_title_left);
         tv_table_title_left.setText("企业名称");
         leftListView = (ListView) getActivity().findViewById(R.id.left_container_listview);
-        rightListView = (ListView)getActivity(). findViewById(R.id.right_container_listview);
-        right_title_container = (LinearLayout) getActivity().findViewById(R.id.right_title_container);
+        rightListView = (ListView) getActivity().findViewById(R.id.right_container_listview);
+        right_title_container = (LinearLayout)getActivity(). findViewById(R.id.right_title_container);
         getLayoutInflater().inflate(R.layout.table_right_title, right_title_container);
         titleHorScv = (SyncHorizontalScrollView) getActivity().findViewById(R.id.title_horsv);
         contentHorScv = (SyncHorizontalScrollView) getActivity().findViewById(R.id.content_horsv);
@@ -262,4 +264,6 @@ public class Fragment2 extends Fragment {
             }
         }
     }
+
+
 }
