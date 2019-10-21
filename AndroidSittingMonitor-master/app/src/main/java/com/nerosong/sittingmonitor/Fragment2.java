@@ -32,12 +32,9 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class Fragment2 extends Fragment {
     //branch branch branch
-<<<<<<< HEAD
     //123456
-=======
 
-    //456456
->>>>>>> branch1
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
