@@ -4,7 +4,7 @@
 <color name="colorPrimaryDark">#00574B</color>
 <color name="colorAccent">#4CAF50</color>
 <color name="white">#FFFFFF</color>
-
+    <color name="qmui_config_color_white">#ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="black_alpha_128">#80000000</color>
     <color name="list_item_background_pressed">#FCFCFC</color>

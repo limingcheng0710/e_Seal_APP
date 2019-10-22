@@ -4,48 +4,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg2">
-<android.support.design.circularreveal.cardview.CircularRevealCardView
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    app:cardCornerRadius="25dp"
-    android:layout_marginTop="50dp"
-    android:background="#11000000"
-    >
-    <TextView
-        android:id="@+id/user_information"
+    android:background="@drawable/bg4">
+    <android.support.design.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FFFFFF"
-        android:text="个人信息"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:gravity="center"
-        />
-</android.support.design.circularreveal.cardview.CircularRevealCardView>
-    <TextView
-        android:id="@+id/text_quit"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="150dp"
-        android:background="#FFFFFF"
-        android:text="退出登录"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:gravity="center"/>
+        android:layout_height="55dp"
+        app:cardCornerRadius="25dp"
+        android:layout_marginTop="100dp"
+        android:background="#11000000"
+        >
 
-    <TextView
-        android:id="@+id/about_app"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/text_quit"
-        android:layout_marginBottom="30dp"
-        android:text="关于APP"
-        android:background="#FFFFFF"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:gravity="center"
-        />
+        <TextView
+            android:id="@+id/user_information"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ripple_bg"
+            android:gravity="center"
+            android:text="个人信息"
+            android:textColor="#000000"
+            android:textSize="24sp" />
+    </android.support.design.circularreveal.cardview.CircularRevealCardView>
 
+    <android.support.design.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:cardCornerRadius="25dp"
+        android:layout_marginTop="450dp"
+        android:background="#11000000"
+        >
+        <TextView
+            android:id="@+id/text_quit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:background="#FFFFFF"
+            android:text="退出登录"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:gravity="center"/>
+    </android.support.design.circularreveal.cardview.CircularRevealCardView>
+
+
+    <android.support.design.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:cardCornerRadius="25dp"
+        android:layout_marginTop="350dp"
+        android:background="#11000000"
+        >
+        <TextView
+            android:id="@+id/about_app"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/text_quit"
+            android:layout_marginBottom="230dp"
+            android:text="关于APP"
+            android:background="#FFFFFF"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:gravity="center"
+            />
+    </android.support.design.circularreveal.cardview.CircularRevealCardView>
 </RelativeLayout>
