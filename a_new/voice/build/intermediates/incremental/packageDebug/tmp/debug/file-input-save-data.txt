@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Sun Aug 18 08:15:51 CST 2019
+0.baseType=DIRECTORY
+0.base=E\:\\a_changed\\a_new\\voice\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1

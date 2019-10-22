@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.longsh:OptionFrame:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/OptionFrame-1.0.0.aar/bbda7226e31208186dc329e4e3974380/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/OptionFrame-1.0.0.aar/bbda7226e31208186dc329e4e3974380/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.longsh/OptionFrame/1.0.0/c21c46c3bc06c99a295294797a53ea8f8172840c/OptionFrame-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

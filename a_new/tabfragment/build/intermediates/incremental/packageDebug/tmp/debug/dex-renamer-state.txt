@@ -1,0 +1,4 @@
+#Sat Oct 19 13:41:14 CST 2019
+base.0=D\:\\APP\\chair_APP_ByMyself\\a_new\\tabfragment\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
