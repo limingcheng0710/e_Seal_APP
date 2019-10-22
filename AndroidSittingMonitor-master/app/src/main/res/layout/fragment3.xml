@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg4">
+    android:background="@drawable/bg6">
     <android.support.design.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        app:cardCornerRadius="25dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="27dp"
         android:layout_marginTop="100dp"
         android:background="#11000000"
         >
@@ -20,13 +20,15 @@
             android:background="@drawable/ripple_bg"
             android:gravity="center"
             android:text="个人信息"
-            android:textColor="#000000"
-            android:textSize="24sp" />
+            android:textColor="#EB000000"
+            android:textSize="24sp"
+            android:typeface="serif"
+            />
     </android.support.design.circularreveal.cardview.CircularRevealCardView>
 
     <android.support.design.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         app:cardCornerRadius="25dp"
         android:layout_marginTop="450dp"
         android:background="#11000000"
@@ -37,17 +39,18 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="50dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/ripple_bg"
             android:text="退出登录"
-            android:textColor="#000000"
+            android:textColor="#EB000000"
             android:textSize="24sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:typeface="serif"/>
     </android.support.design.circularreveal.cardview.CircularRevealCardView>
 
 
     <android.support.design.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         app:cardCornerRadius="25dp"
         android:layout_marginTop="350dp"
         android:background="#11000000"
@@ -59,10 +62,11 @@
             android:layout_above="@+id/text_quit"
             android:layout_marginBottom="230dp"
             android:text="关于APP"
-            android:background="#FFFFFF"
-            android:textColor="#000000"
+            android:background="@drawable/ripple_bg"
+            android:textColor="#EB000000"
             android:textSize="24sp"
             android:gravity="center"
+            android:typeface="serif"
             />
     </android.support.design.circularreveal.cardview.CircularRevealCardView>
 </RelativeLayout>

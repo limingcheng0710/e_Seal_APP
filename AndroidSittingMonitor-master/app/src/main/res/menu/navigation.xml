@@ -4,19 +4,19 @@
     <item
         android:id="@+id/navigation_state"
         android:orderInCategory="0"
-        android:icon="@drawable/ic_alarm_on_black_24dp"
-        android:title="调试"/>
+        android:icon="@drawable/ic_33"
+        android:title="查验"/>
 
     <item
         android:id="@+id/navigation_home"
         android:orderInCategory="1"
-        android:icon="@drawable/ic_map_black_24dp"
-        android:title="提醒"/>
+        android:icon="@drawable/ic_11"
+        android:title="记录"/>
 
     <item
         android:id="@+id/navigation_dashboard"
         android:orderInCategory="2"
-        android:icon="@drawable/ic_chrome_reader_mode_black_24dp"
-        android:title="记录"/>
+        android:icon="@drawable/ic_22"
+        android:title="我的"/>
 
 </menu>
