@@ -2,11 +2,13 @@ package com.nerosong.sittingmonitor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,8 +35,8 @@ import java.util.List;
 
 public class TableActivity extends AppCompatActivity {
 
-    private SQLiteHelper sqLiteHelper;
-    private SQLiteDatabase db;
+    private SQLiteHelper2 sqLiteHelper3;
+    private SQLiteDatabase db3;
 
 
     /**
@@ -59,8 +61,20 @@ public class TableActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
             setContentView(R.layout.table_layout);
+        sqLiteHelper3 = new SQLiteHelper2(TableActivity.this,"recorddb.db",null,1);
         init();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            moveTaskToBack(true);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,7 +184,7 @@ public class TableActivity extends AppCompatActivity {
                         //如果有数据传入，那么就加一条数据
                         pageNo = 0;
                         doGetDatas(0, RefreshParams.REFRESH_DATA);
-//                        doGetDatas(pageNo, RefreshParams.REFRESH_DATA);
+//                doGetDatas(pageNo, RefreshParams.REFRESH_DATA);
 
                     }
                 }, 1000);
@@ -182,9 +196,15 @@ public class TableActivity extends AppCompatActivity {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if(pageNo<3){   //最多显示三页，否则提示
+                        if(pageNo<2){   //最多显示两页，否则提示
                             doGetDatas(pageNo, RefreshParams.LOAD_DATA);
+                            if(RefreshParams.LOAD_DATA == RefreshParams.REFRESH_DATA){
+                                pulltorefreshview.onHeaderRefreshFinish();
+                            }else{
+                                pulltorefreshview.onFooterLoadFinish();
+                            }
                         }
+
                         else{
                             Toast.makeText(TableActivity.this, "没有更多的数据了", Toast.LENGTH_SHORT).show();
 
@@ -213,25 +233,100 @@ public class TableActivity extends AppCompatActivity {
     }
 
 
+//    //模拟网络请求
+//    //在最下方添加一条数据,内容为第一个fragment
+//    public  void addOneDates(int pageno,int state){
+//        db3 = sqLiteHelper3.getWritableDatabase();
+//        Cursor cursor = db3.query("records", null, null, null, null, null, null);
+//        int n=0;
+//        if (cursor.moveToFirst()) {
+//            do {
+//                n++;
+//
+//            } while (cursor.moveToNext());
+//        }
+//
+//        List<OnlineSaleBean> onlineSaleBeanList = new ArrayList<>();
+//        for(int i=0;i<n;i++){
+//            onlineSaleBeanList.add(new OnlineSaleBean("No."+i+pageno*20));
+//        }
+//
+//        if(state == RefreshParams.REFRESH_DATA){
+//            pulltorefreshview.onHeaderRefreshFinish();
+//        }else{
+//            pulltorefreshview.onFooterLoadFinish();
+//        }
+//        setOneDatas(onlineSaleBeanList, state,pageno);
+//    }
+
+//    private void setOneDatas(List<OnlineSaleBean> onlineSaleBeanList, int type,int pageno) {
+//        if (onlineSaleBeanList.size() > 0) {
+//            List<TableModel> mDatas = new ArrayList<>();
+//            for (int i = 0; i < onlineSaleBeanList.size(); i++) {
+//                OnlineSaleBean onlineSaleBean = onlineSaleBeanList.get(i);
+//                TableModel tableMode = new TableModel();
+//                tableMode.setOrgCode(onlineSaleBean.getOrgCode());
+//                tableMode.setLeftTitle(onlineSaleBean.getCompanyName());
+//                db3 = sqLiteHelper3.getWritableDatabase();
+//                Cursor cursor = db3.query("records", null, null, null, null, null, null);
+//
+////                if (cursor.moveToFirst()) {
+////                    do {
+////                        tableMode.setText0(cursor.getString(cursor.getColumnIndex("filename")));//列0内容
+////                        tableMode.setText1(cursor.getString(cursor.getColumnIndex("applicant")));//列1内容
+////                        tableMode.setText2(cursor.getString(cursor.getColumnIndex("approver")));//列2内容
+////                        tableMode.setText3(cursor.getString(cursor.getColumnIndex("date")));
+////                        tableMode.setText4(cursor.getString(cursor.getColumnIndex("filename")));
+////                        mDatas.add(tableMode);
+////                    } while (cursor.moveToNext());
+//                }
+//
+//
+//            }
+//            boolean isMore;
+//            if (type == RefreshParams.LOAD_DATA) {
+//                isMore = true;
+//            } else {
+//                isMore = false;
+//            }
+//            mLeftAdapter.addData(mDatas, isMore);
+//            mRightAdapter.addData(mDatas, isMore);
+//            //加载数据成功，增加页数，但是最大条数限制在100
+//            pageNo++;
+////            if (mDatas.size() < 20) {
+////                pulltorefreshview.setLoadMoreEnable(false);
+////            }
+//            mDatas.clear();
+//        } else {
+//            //数据为null
+//            if (type == RefreshParams.REFRESH_DATA) {
+//                mLeftAdapter.clearData(true);
+//                mRightAdapter.clearData(true);
+//                //显示数据为空的视图
+//                //                mEmpty.setShowErrorAndPic(getString(R.string.empty_null), 0);
+//            } else if (type == RefreshParams.LOAD_DATA) {
+//                Toast.makeText(mContext, "请求json失败",Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+
     //模拟网络请求
-    //在最下方添加一条数据,内容为第一个fragment
-    public  void addOneDates(int pageno,int state){
+    public void doGetDatas(int pageno, int state) {
         List<OnlineSaleBean> onlineSaleBeanList = new ArrayList<>();
-        onlineSaleBeanList.add(new OnlineSaleBean("No."+pageno*20));
+        for(int i=0+pageno*20;i<20*(pageno+1);i++){
+            onlineSaleBeanList.add(new OnlineSaleBean("No."+i));
+
+        }
         if(state == RefreshParams.REFRESH_DATA){
             pulltorefreshview.onHeaderRefreshFinish();
         }else{
             pulltorefreshview.onFooterLoadFinish();
         }
         setDatas(onlineSaleBeanList, state,pageno);
-    }
 
-
-
-    //模拟网络请求
-    public void doGetDatas(int pageno, int state) {
+    }  public void doGetDatas2(int pageno, int state) {
         List<OnlineSaleBean> onlineSaleBeanList = new ArrayList<>();
-        for(int i=0+pageno*20;i<20*(pageno+1);i++){
+        for(int i=0+pageno*21;i<21*(pageno+1);i++){
             onlineSaleBeanList.add(new OnlineSaleBean("No."+i));
 
         }
@@ -251,47 +346,12 @@ public class TableActivity extends AppCompatActivity {
                 TableModel tableMode = new TableModel();
                 tableMode.setOrgCode(onlineSaleBean.getOrgCode());
                 tableMode.setLeftTitle(onlineSaleBean.getCompanyName());
-                tableMode.setText0("与" + String.valueOf(i) + "号公司的合同");//列0内容
-                tableMode.setText1("员工" + String.valueOf(i) + "号");//列1内容
-                tableMode.setText2("领导" + String.valueOf(i) + "号");//列2内容
+                tableMode.setText0("与" + String.valueOf(i+1) + "号公司的合同");//列0内容
+                tableMode.setText1("员工" + String.valueOf(i+1) + "号");//列1内容
+                tableMode.setText2("领导" + String.valueOf(i+1) + "号");//列2内容
                 tableMode.setText3("2019/10/" + String.valueOf(pageno+1));
-                int flag = 0;
-                flag =(int)(Math.random()*(10)+1);
-                if(flag <9){
-                    tableMode.setText4("是");
-                }
-                else{
-                    tableMode.setText4("否");
-                }
+                tableMode.setText4("是");
                 mDatas.add(tableMode);
-//                public String getFileName() {
-//                    return fileName;
-//                }
-//                public void setgetFileName(int i) {
-//                    this.fileName ="与" + String.valueOf(i) + "号公司的合同";
-//                }
-//
-//                public String getApplicant() {
-//                    return applicant;
-//                }
-//                public void setApplicant(int i) {
-//                    this.applicant = "员工" + String.valueOf(i) + "号";
-//                }
-//
-//                public String getApprover() {
-//                    return approver;
-//                }
-//                public void setApprover(int i ) {
-//                    this.approver = "领导" + String.valueOf(i) + "号";
-//                }
-//
-//                public String getDate() {
-//                    return date;
-//                }
-//                public void setDate(int i) {
-//                    this.date = "2019/10/" + String.valueOf(i);
-//                }
-
             }
             boolean isMore;
             if (type == RefreshParams.LOAD_DATA) {

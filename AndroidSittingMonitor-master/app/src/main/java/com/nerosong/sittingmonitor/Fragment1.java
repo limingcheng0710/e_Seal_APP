@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.CheckResult;
@@ -83,7 +84,7 @@ public class Fragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment1, container, false);
-        sqLiteHelper2 = new SQLiteHelper2(getActivity(),"recorddb.db",null,1);
+        sqLiteHelper2 = new SQLiteHelper2(getActivity(), "recorddb.db", null, 1);
         ButterKnife.bind(this, view);
 
 
@@ -256,36 +257,45 @@ public class Fragment1 extends Fragment {
     @OnClick(R.id.check)
     public void check() {
         db2 = sqLiteHelper2.getWritableDatabase();
-        String input_FileName = inputFileName.getText().toString();
-
-        Cursor cursor = db2.query("records", new String[]{"filename","applicant" ,"approver" ,"date" ,"if_Right"}, "filename = ? ", new String[]{input_FileName},
-                null, null, null, null);
-
-        //第一个参数，数据表；第二个参数，查询的列；第三个参数查询条件，为占位符;第四个字段指定第三个条件中的占位符的值.剩下的三个参数全部设置为空
+        final String input_FileName = inputFileName.getText().toString();
 
 
-        if (cursor.moveToFirst()){     //cursor对象移动到下一条记录
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //如果有数据传入，那么就加一条数据
+                //如果查到，那么显示内容;
+                db2 = sqLiteHelper2.getWritableDatabase();
+                Cursor cursor = db2.query("records", new String[]{"filename", "applicant", "approver", "date", "if_Right"}, "filename = ? ", new String[]{input_FileName},
+                        null, null, null, null);
 
-            //如果查到，那么显示内容;
-            checkResult1.clearComposingText();
-            checkResult2.setText("校验成功");
-            checkResult1.setText("文件名:"+cursor.getString(cursor.getColumnIndex("filename")));
-            checkResult1.append("\n申请人:"+cursor.getString(cursor.getColumnIndex("applicant")));
-            checkResult1.append("\n审核人:"+cursor.getString(cursor.getColumnIndex("approver")));
-            checkResult1.append("\n审核时间:"+cursor.getString(cursor.getColumnIndex("date")));
-            checkResult1.append("\n是否校验:"+cursor.getString(cursor.getColumnIndex("if_Right")));
-            Toast.makeText(getActivity(),"成功",Toast.LENGTH_SHORT);
-        }else {
-            checkResult2.setText("失败");
-            Toast.makeText(getActivity(),"失败",Toast.LENGTH_SHORT);
-            checkResult1.setText("fakjshkashihfaiushfsfhoiejffafsdgsfdghjgdkuq");
-        }
-        cursor.close();
-        db2.close();
+                if (cursor.moveToFirst()) {     //cursor对象移动到下一条记录
+                    //如果查到，那么显示内容;
+                    checkResult1.clearComposingText();
+                    checkResult2.setText("校验成功");
+                    checkResult1.setText("文件名:" + cursor.getString(cursor.getColumnIndex("filename")));
+                    checkResult1.append("\n申请人:" + cursor.getString(cursor.getColumnIndex("applicant")));
+                    checkResult1.append("\n审核人:" + cursor.getString(cursor.getColumnIndex("approver")));
+                    checkResult1.append("\n审核时间:" + cursor.getString(cursor.getColumnIndex("date")));
+                    checkResult1.append("\n是否校验:" + cursor.getString(cursor.getColumnIndex("if_Right")));
+                    Toast.makeText(getActivity(), "校验成功，公文合法", Toast.LENGTH_SHORT);
+                    cursor.close();
+                    db2.close();
+
+                } else {
+                    checkResult2.setText("失败");
+                    checkResult1.setText("fakjshkashihfaiushfsfhoiejffafsdgsfdghjgdkuq");
+                    Toast.makeText(getActivity(), "校验失败，公文非法", Toast.LENGTH_LONG);
+                    db2.execSQL("update records set if_Right = ? where filename = ?",new Object[]{"否",input_FileName});
+                    cursor.close();
+                    db2.close();
+                }
+
+            }
+        }, 3);
 
 
 
     }
-
-
 }
