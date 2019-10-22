@@ -293,7 +293,7 @@ public class Fragment1 extends Fragment {
                 }
 
             }
-        }, 3);
+        }, 1);
 
 
 

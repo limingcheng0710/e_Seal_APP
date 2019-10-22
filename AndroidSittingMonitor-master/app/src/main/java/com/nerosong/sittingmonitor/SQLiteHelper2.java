@@ -58,7 +58,9 @@ public class SQLiteHelper2 extends SQLiteOpenHelper {
 //        db.execSQL("insert into records values('与29号公司的合同','员工29号','领导29号','2019/10/2','是')");
         db.execSQL("insert into records values('与30号公司的合同','员工30号','领导30号','2019/10/2','是')");
 
-        db.execSQL("insert into records values('1','员工一号','领导一号','2019/10/1','是')");
+        db.execSQL("insert into records values('玉玺密制合同','员工','老板','2019/10/1','是')");
+        db.execSQL("insert into records values('玉玺密制合同','冒充员工','老板','2019/10/1','是')");
+
     }
 
     @Override

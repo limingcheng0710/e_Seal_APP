@@ -350,7 +350,12 @@ public class TableActivity extends AppCompatActivity {
                 tableMode.setText1("员工" + String.valueOf(i+1) + "号");//列1内容
                 tableMode.setText2("领导" + String.valueOf(i+1) + "号");//列2内容
                 tableMode.setText3("2019/10/" + String.valueOf(pageno+1));
-                tableMode.setText4("是");
+                if(i%9 ==0){
+                    tableMode.setText4("否");
+                }
+                else{
+                    tableMode.setText4("是");
+                }
                 mDatas.add(tableMode);
             }
             boolean isMore;

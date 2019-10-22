@@ -28,11 +28,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/jike"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/jike"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".LoginActivity" >
 
         </activity>
@@ -47,7 +48,8 @@
 
 
         </activity>
-        <activity android:name=".TableActivity"/>
+        <activity android:name=".TableActivity"
+            android:launchMode="singleInstance"></activity>
         <activity android:name=".About_APP" />
         <activity android:name=".UserInformation" />
 

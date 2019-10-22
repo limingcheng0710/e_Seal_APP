@@ -111,11 +111,11 @@ public class Fragment2 extends Fragment {
 
                     }
                     else{
-                        textBack.clearComposingText();
                         textFront.setText("NULL");
                         textNormal.setText("NULL");
                         textLeft.setText("NULL");
                         textRight.setText("NULL");
+                        textBack.setText("NULL");
                         Toast.makeText(getActivity(),"查询失败，不存在此条记录",Toast.LENGTH_LONG);
                         cursor.close();
                         db2.close();
