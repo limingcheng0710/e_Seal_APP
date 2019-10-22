@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">电子印章</string>
+    <string name="app_name">极客印章</string>
 
     <!--新版登录专用-->
     <string name="login">登录</string>
