@@ -272,24 +272,25 @@ public class Fragment1 extends Fragment {
 
                 if (cursor.moveToFirst()) {     //cursor对象移动到下一条记录
                     //如果查到，那么显示内容;
-                    checkResult1.clearComposingText();
-                    checkResult2.setText("校验成功");
-                    checkResult1.setText("文件名:" + cursor.getString(cursor.getColumnIndex("filename")));
-                    checkResult1.append("\n申请人:" + cursor.getString(cursor.getColumnIndex("applicant")));
-                    checkResult1.append("\n审核人:" + cursor.getString(cursor.getColumnIndex("approver")));
-                    checkResult1.append("\n审核时间:" + cursor.getString(cursor.getColumnIndex("date")));
-                    checkResult1.append("\n是否校验:" + cursor.getString(cursor.getColumnIndex("if_Right")));
-                    Toast.makeText(getActivity(), "校验成功，公文合法", Toast.LENGTH_SHORT);
-                    cursor.close();
-                    db2.close();
-
-                } else {
+//                    checkResult1.clearComposingText();
+//                    checkResult2.setText("校验成功");
+//                    checkResult1.setText("文件名:" + cursor.getString(cursor.getColumnIndex("filename")));
+//                    checkResult1.append("\n申请人:" + cursor.getString(cursor.getColumnIndex("applicant")));
+//                    checkResult1.append("\n审核人:" + cursor.getString(cursor.getColumnIndex("approver")));
+//                    checkResult1.append("\n审核时间:" + cursor.getString(cursor.getColumnIndex("date")));
+//                    checkResult1.append("\n是否校验:" + cursor.getString(cursor.getColumnIndex("if_Right")));
+//                    Toast.makeText(getActivity(), "校验成功，公文合法", Toast.LENGTH_SHORT);
+//                    cursor.close();
+//                    db2.close();
                     checkResult2.setText("失败");
                     checkResult1.setText("fakjshkashihfaiushfsfhoiejffafsdgsfdghjgdkuq");
                     Toast.makeText(getActivity(), "校验失败，公文非法", Toast.LENGTH_LONG);
                     db2.execSQL("update records set if_Right = ? where filename = ?",new Object[]{"否",input_FileName});
                     cursor.close();
                     db2.close();
+
+                } else {
+
                 }
 
             }
